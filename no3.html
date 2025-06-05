@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Her Out</title>
+  <style>
+    /* Internal CSS */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffebee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+    
+    .container {
+      text-align: center;
+      padding: 20px;
+      max-width: 90%;
+      position: relative;
+    }
+    
+    .tenor-gif-embed {
+      margin: 20px auto;
+      max-width: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: heartbeat 1.5s infinite;
+    }
+    
+    .tenor-gif-embed img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    h1 {
+      color: #d32f2f;
+      margin: 20px 0;
+      font-size: 1.8rem;
+      animation: fadeIn 1.5s ease-in-out;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    p {
+      color: #e53935;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: slideUp 1s ease-out;
+    }
+    
+    .btn {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    
+    .btn a {
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .btn a:first-child {
+      background-color: #4caf50;
+      color: white;
+      animation: bounce 2s infinite;
+    }
+    
+    .btn a:last-child {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+    
+    .btn a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Animations */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.05); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .btn a {
+        padding: 10px 25px;
+        font-size: 1rem;
+      }
+      
+      .tenor-gif-embed {
+        max-width: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="tenor-gif-embed" data-postid="15974530976611222074" data-share-method="host" data-aspect-ratio="1.26923"
+      data-width="100%">
+       <img src="09c67f79-778b-4e75-a2e5-606f3d15acde.gif" alt="">
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    <h1>Baby Man jao na! Kitna bhav khaogi 😭</h1>
+    <p>bhut glt baat hai yrr😭</p>
+
+    <div class="btn">
+      <a href="yes.html">Yes</a>
+      <a href="#" id="move-random">No</a>
+    </div>
+  </div>
+
+  <script>
+    // Internal JavaScript for moving the No button
+    document.addEventListener('DOMContentLoaded', function() {
+      const noButton = document.getElementById('move-random');
+      const btnContainer = document.querySelector('.btn');
+      
+      // Make the "No" button move when hovered or touched
+      noButton.addEventListener('mouseover', moveButton);
+      noButton.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        moveButton();
+      });
+      
+      function moveButton() {
+        const containerWidth = btnContainer.offsetWidth - noButton.offsetWidth;
+        const containerHeight = btnContainer.offsetHeight - noButton.offsetHeight;
+        
+        const randomX = Math.floor(Math.random() * containerWidth);
+        const randomY = Math.floor(Math.random() * containerHeight);
+        
+        noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        noButton.style.transition = 'transform 0.1s ease-out';
+      }
+      
+      // Reset position when mouse leaves (for better UX)
+      btnContainer.addEventListener('mouseleave', function() {
+        noButton.style.transform = 'translate(0, 0)';
+        noButton.style.transition = 'transform 0.3s ease-out';
+      });
+    });
+  </script>
+</body>
+
+</html>
